@@ -5,13 +5,49 @@
 
 <h2>HW1</h2>
 
-<form>
-    帳號:<input id="email" name="email" type="text" value="" /><br />
-    密碼:<input id="password" name="password" type="password" value="" /><br />
-    年齡:<input type="number" name="" value="" /><br />
-    性別:<input type="radio" name="gender" value="A" />男生
-    <input type="radio" name="gender" value="B" />女生<br />
-    興趣:<input type="checkbox" name="reading" value="A" />看書
-    <input type="checkbox" name="swiming"value="A" />游泳
+@using (Html.BeginForm("Index", "Test", FormMethod.Post))
+{
+    <div>
+        帳號:@Html.TextBox("account", "test@gmail.com")<br />
+        密碼:@Html.Password("Password", "123456")
+        <br />
+        年齡:@Html.TextBox("age")
+        <br />
+        性別:@Html.RadioButton("gender", "A")男生
+        @Html.RadioButton("gender", "B")女生
+        <br />
+        興趣:@Html.CheckBox("swimming", "A")看書
+        @Html.CheckBox("swimming", "A")打籃球
+        <br />
+        是否在學:@Html.RadioButton("isStudent", "A")是
+        @Html.RadioButton("isStudent", "B")否
+        <br />
+        關於我:@Html.TextBox("about")<hr />
+    </div>
+}
+@{
+    var message = "老師好，這是我Github的網址";
+    var http = "https://github.com/zilinggg/web411018947.git";
+    var isStudent = true;
+}
 
-</form>
+@if (isStudent == true)
+{
+    <p>是學生</p>
+}
+else
+{
+    <p>不是學生</p>
+}
+
+印出1-10
+<br />
+@for (int i = 1; i <= 10; i++)
+{
+    <p>
+        @i
+    </p>
+}
+<hr />
+<p>@message</p>
+<p>@http</p>
